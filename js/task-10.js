@@ -40,6 +40,7 @@ const destroyBoxesBtn = document.querySelector("[data-destroy]")
 destroyBoxesBtn.addEventListener("click", () => {
   boxesContainer.innerHTML = "";
   inputQuantityBoxes.value = "";
+  quantityBoxes = 0;
 })
 
 
