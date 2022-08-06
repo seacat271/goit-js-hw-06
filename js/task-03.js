@@ -15,24 +15,10 @@ const images = [
 
 const galleryEl = document.querySelector(".gallery");
 
-const createImagesGallery = (images) => {
-  return images.map(({url, alt}) => {
-  
-    const itemGalleryEl = document.createElement("li");
-    itemGalleryEl.classList.add("gallery__item")
-    const imageItemGalleryEl = document.createElement("img");
-    imageItemGalleryEl.setAttribute("src", url);
-    imageItemGalleryEl.setAttribute("alt", alt);
-    imageItemGalleryEl.setAttribute("width", 320);
-    imageItemGalleryEl.setAttribute("height", 200);
-    
-    itemGalleryEl.append(imageItemGalleryEl);
-  
-    return itemGalleryEl
-  })
-}
+const markupImagesGallery = images
+.map(({url, alt}) => {
+  return `<li class="gallery__item"><img src="${url}" alt="${alt}" width="320" height="200"></li>`
+})
+.join("");
 
-const itemsGalleryEl = createImagesGallery(images)
-
-galleryEl.append(...itemsGalleryEl)
-
+galleryEl.insertAdjacentHTML("afterbegin", markupImagesGallery)
