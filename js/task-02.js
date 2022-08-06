@@ -18,7 +18,6 @@ return array.map(ingredient => {
 })
 };
 
-const listIngredientsEl = createListIngredients(ingredients);
-listIngredientsContainerEl.append(...listIngredientsEl);
+listIngredientsContainerEl.append(...createListIngredients(ingredients));
 
 
