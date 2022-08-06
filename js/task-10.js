@@ -28,19 +28,27 @@ function createBoxes(amount) {
     
     box.append(colorText)
     boxesContainer.append(box)
+
+    inputQuantityBoxes.value = "";
+    quantityBoxes = 0;
   }
+}
+
+function cleanBoxesContainer() {
+  boxesContainer.innerHTML = "";
 }
 
 const createBoxesBtn = document.querySelector("[data-create]")
 createBoxesBtn.addEventListener("click", () => {
-  createBoxes(quantityBoxes)
+  cleanBoxesContainer()
+  createBoxes(quantityBoxes);
 })
 
 const destroyBoxesBtn = document.querySelector("[data-destroy]")
-destroyBoxesBtn.addEventListener("click", () => {
-  boxesContainer.innerHTML = "";
-  inputQuantityBoxes.value = "";
-  quantityBoxes = 0;
-})
+destroyBoxesBtn.addEventListener("click", cleanBoxesContainer)
+
+
+
+
 
 
