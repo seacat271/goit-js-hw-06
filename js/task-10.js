@@ -12,6 +12,7 @@ inputQuantityBoxes.addEventListener("input", () => {
 const boxesContainer = document.querySelector("#boxes");
 
 function createBoxes(amount) {
+  cleanBoxesContainer()
   for (let i = 1; i <= amount; i += 1) {
     let color = getRandomHexColor()
     const box = document.createElement("div")
@@ -28,9 +29,6 @@ function createBoxes(amount) {
     
     box.append(colorText)
     boxesContainer.append(box)
-
-    inputQuantityBoxes.value = "";
-    quantityBoxes = 0;
   }
 }
 
@@ -38,14 +36,17 @@ function cleanBoxesContainer() {
   boxesContainer.innerHTML = "";
 }
 
-const createBoxesBtn = document.querySelector("[data-create]")
-createBoxesBtn.addEventListener("click", () => {
+function destroyBoxes() {
   cleanBoxesContainer()
-  createBoxes(quantityBoxes);
-})
+  inputQuantityBoxes.value = "";
+  quantityBoxes = 0;
+}
+
+const createBoxesBtn = document.querySelector("[data-create]")
+createBoxesBtn.addEventListener("click", () => createBoxes(quantityBoxes))
 
 const destroyBoxesBtn = document.querySelector("[data-destroy]")
-destroyBoxesBtn.addEventListener("click", cleanBoxesContainer)
+destroyBoxesBtn.addEventListener("click", destroyBoxes)
 
 
 
